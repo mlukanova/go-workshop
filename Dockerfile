@@ -16,7 +16,7 @@ RUN go get ./... && \
 FROM scratch
 
 ENV GO_PORT 8585
-ENV GO_DIAGNOSTICS_PORT 8080
+ENV GO_DIAGNOSTICS_PORT 3000
 
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
