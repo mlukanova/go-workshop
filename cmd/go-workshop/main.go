@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	log.Print("Hello, World!")
+	log.Print("Starting Application")
 
 	blPort := os.Getenv("GO_PORT")
 
@@ -27,7 +27,9 @@ func main() {
 	router.HandleFunc("/", hello)
 
 	go func() {
-		err := http.ListenAndServe(":8888", router)
+		log.Print("The Application Server is preparing")
+
+		err := http.ListenAndServe(":"+blPort, router)
 
 		if err != nil {
 			log.Fatal(err)
@@ -35,7 +37,9 @@ func main() {
 	}()
 
 	diagnostics := diagnostics.NewDiagnostics()
-	err := http.ListenAndServe(":8885", diagnostics)
+	log.Print("The Diagnostics Server is preparing")
+
+	err := http.ListenAndServe(":"+diagnosticsPort, diagnostics)
 
 	if err != nil {
 		log.Fatal(err)
@@ -44,5 +48,6 @@ func main() {
 }
 
 func hello(w http.ResponseWriter, r *http.Request) {
+	log.Print("The hello function was called")
 	w.WriteHeader(200)
 }
