@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/mlukanova/go-workshop/internal/diagnostics"
@@ -10,6 +11,17 @@ import (
 
 func main() {
 	log.Print("Hello, World!")
+
+	blPort := os.Getenv("GO_PORT")
+
+	if len(blPort) == 0 {
+		log.Fatal("Config port should be set!")
+	}
+
+	diagnosticsPort := os.Getenv("GO_DIAGNOSTICS_PORT")
+	if len(diagnosticsPort) == 0 {
+		log.Fatal("Diagnostics port should be set!")
+	}
 
 	router := mux.NewRouter()
 	router.HandleFunc("/", hello)
