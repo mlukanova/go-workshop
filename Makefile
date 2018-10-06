@@ -2,7 +2,7 @@
 GOOS?=linux
 GOARCH?=amd64
 
-PROJECT?=github.com/rumyantseva/go-workshop
+PROJECT?=github.com/mlukanova/go-workshop
 BUILD_PATH?=cmd/go-workshop
 APP?=go-workshop
 
@@ -16,7 +16,7 @@ BUILD_TIME?=$(shell date -u '+%Y-%m-%d_%H:%M:%S')
 
 # Parameters to push images and release app to Kubernetes or try it with Docker
 REGISTRY?=docker.io/webdeva
-NAMESPACE?=rumyantseva
+NAMESPACE?=mlukanova
 CONTAINER_NAME?=${NAMESPACE}-${APP}
 CONTAINER_IMAGE?=${REGISTRY}/${CONTAINER_NAME}
 VALUES?=values-stable
